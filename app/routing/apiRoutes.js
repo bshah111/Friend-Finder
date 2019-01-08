@@ -8,37 +8,37 @@ module.exports = function(app){
         res.json(friends);
     });
 
-    app.post("/api/friends", function(req, res){
-        friendArray.push(req.body);
-        
-        //variable will hold the current best match friend in the friendArray
-        var bestMatch;
-        //variable to hold the current difference between best match friend
-        var bestMatchTotal = 1000;
-    
-        //loop to see which friend matches
-        for (var i = 0; i < friendArray.length-1; i ++){
-          var q1 = Math.abs(friendArray[i].scores[0] - req.body.scores[0]);
-          var q2 = Math.abs(friendArray[i].scores[1] - req.body.scores[1]);
-          var q3 = Math.abs(friendArray[i].scores[2] - req.body.scores[2]);
-          var q4 = Math.abs(friendArray[i].scores[3] - req.body.scores[3]);
-          var q5 = Math.abs(friendArray[i].scores[4] - req.body.scores[4]);
-          var q6 = Math.abs(friendArray[i].scores[5] - req.body.scores[5]);
-          var q7 = Math.abs(friendArray[i].scores[6] - req.body.scores[6]);
-          var q8 = Math.abs(friendArray[i].scores[7] - req.body.scores[7]);
-          var q9 = Math.abs(friendArray[i].scores[8] - req.body.scores[8]);
-          var q10 = Math.abs(friendArray[i].scores[9] - req.body.scores[9]);
-          var total = q1 + q2 + q3 + q4 + q5 + q6 + q7 + q8 + q9 + q10;
-          console.log(total);
-          if (total < bestMatchTotal){
-            bestMatchTotal = total;
-            bestMatch = friendArray[i];
-          }
-          
+    app.post('/api/friends', function(req,res){
+      //grabs the new friend's scores to compare with friends in friends array
+      var newFriendScores = req.body.scores;
+      var scoresArray = [];
+      var friendCount = 0;
+      var bestMatch = 0;
+  
+      //runs through all current friends in list
+      for(var i=0; i<friends.length; i++){
+        var scoresDiff = 0;
+        //run through scores to compare friends
+        for(var j=0; j<newFriendScores.length; j++){
+          scoresDiff += (Math.abs(parseInt(friends[i].scores[j]) - parseInt(newFriendScores[j])));
         }
-    
-        res.json(bestMatch);
-      });
-    }
-    
-    
+  
+        //push results into scoresArray
+        scoresArray.push(scoresDiff);
+      }
+  
+      //after all friends are compared, find best match
+      for(var i=0; i<scoresArray.length; i++){
+        if(scoresArray[i] <= scoresArray[bestMatch]){
+          bestMatch = i;
+        }
+      }
+  
+      //return bestMatch data
+      var bff = friends[bestMatch];
+      res.json(bff);
+  
+      //pushes new submission into the friendsList array
+      friends.push(req.body);
+    });
+  };
