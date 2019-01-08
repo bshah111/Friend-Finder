@@ -1,70 +1,28 @@
+.jumbotron {
+  background-color: transparent;
+  color: aliceblue;
+}
 
-.container {
-    position: relative;
-    width: 100%;
-
-  }
-  
-  .container img {
-    width: 100%;
-    height: auto;
-  }
-  
-  .container .btn {
-    position: absolute;
-    top: 120%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: #555;
-    color: white;
-    font-size: 16px;
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  .container .btn:hover {
-    background-color: black;
+body {
+    background: url("./images/FF4.gif") no-repeat center center fixed;
+    background-size: cover;
   }
 
-  .card{
-    position: absolute;
-    top: 50%;
-    left: 85%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color:whitesmoke;
-    color: black;
-    font-size: 25px;
-    font-weight: bolder;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
+.panel {
+    background-color: rgba(245, 245, 245, 0.8);
+    padding-left: 25px;
+    padding-right: 25px;
+}
 
-  }
-  .quote{
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    width: 100%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color:transparent;
-    color: aqua;
-    font-size: 30px;
-    font-weight: bolder;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    opacity: 1;
+#imagepreview {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-  }
+.caption {
+  font-size: 24px;
+  font-style: italic;
+  font-variant: small-caps;
+}
 
-  .footer{
-    text-align: center;
-  }
