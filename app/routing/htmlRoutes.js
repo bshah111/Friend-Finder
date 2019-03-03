@@ -1,17 +1,19 @@
-// Pull in required dependencies
-var path = require('path');
+var express = require("express");
+var path = require("path");
 
-// Export HTML routes
-module.exports = function(app) {
-	// Home page
-	app.get('/', function(req, res) {
-		res.sendFile(path.join(__dirname, "../public/home.html"));
-	});
+var htmlRouter = express.Router();
 
-	// Survey page
-	app.get('/survey', function(req, res) {
-		res.sendFile(path.join(__dirname, "../public/survey.html"));
-	});
-};
+htmlRouter.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/home.html"));
+});
+
+htmlRouter.get("/survey", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/survey.html"));
+});
+
+module.exports = htmlRouter;
+
+
+
 
 
