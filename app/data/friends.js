@@ -30,7 +30,7 @@ var friends = [{
     ]
     },{
     "name": "Jennier Aniston",
-    "photo": "https://www.hellomagazine.com/profiles/jennifer-aniston/",
+    "photo": "https://pixabay.com/photos/old-woman-desert-old-age-bedouin-574278/",
     "scores": [
     "1",
     "1",
